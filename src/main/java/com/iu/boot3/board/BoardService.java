@@ -17,6 +17,10 @@ public class BoardService {
 	
 	@Autowired
 	private FileManager fileManger;
+	
+	public BoardFilesVO getFileDetail(BoardFilesVO boardFilesVO)throws Exception{
+		return boardMapper.getFileDetail(boardFilesVO);
+	}
 
 	public int setDelete(BoardVO boardVO)throws Exception{
 				

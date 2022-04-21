@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.iu.boot3.member.MemberMapper">
+	
+	<insert id="join" parameterType="MemberVO">
+		INSERT INTO MEMBER(ID, PW, NAME, EMAIL, PHONE)
+		VALUES (#{id},#{pw},#{name},#{email},#{phone})
+	</insert>
+
+	<select id="login" parameterType="MemberVO" resultType="MemberVO">
+		SELECT * FROM MEMBER WHERE ID =#{id} AND PW =#{pw};
+	</select>
+	
+	<select id="myPage" parameterType="MemberVO" resultType="MemberVO">
+		SELECT ID, PW, NAME, EMAIL, PHONE FROM MEMBER WHERE ID=#{id};
+	</select>
+	
+	<update id="update" parameterType="MemberVO">
+		UPDATE MEMBER SET NAME = #{name}, EMAIL=#{email}, PHONE=#{phone} WHERE ID=#{id}
+	</update>
+	
+	<delete id="delete" parameterType="MemberVO">
+		DELETE FROM MEMBER WHERE ID=#{id}
+	</delete>
+	
+	<select id="Detail" parameterType="MemberVO" resultMap="getDetailResult">
+		SELECT M.NAME, M.EMAIL, M.PHONE, F.*
+		FROM MEMBER M
+			LEFT JOIN
+			MEMBERFILES F
+			USING (ID)
+		WHERE ID=#{id}
+	</select>
+	
+	<resultMap type="MemberVO" id="getDetailResult">
+		<id column="id" property="id"/>
+		<result column="pw" property="pw"/>
+		<result column="name" property="name"/>
+		<result column="email" property="email"/>
+		<result column="phone" property="phone"/>
+		<collection property="filesVoOs" javaType="java.util.List" ofType="MemberFilesVO">
+			<id column="fileNum" property="fileNum"/>
+			<result column="fileName" property="fileName"/>
+			<result column="oriName" property="oriName"/>
+		</collection>
+	</resultMap>
+	
+</mapper>
