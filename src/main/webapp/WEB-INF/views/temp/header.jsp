@@ -18,7 +18,7 @@
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page" href="/">Home</a></li>
 					<li class="nav-item"><a class="nav-link active"
-						href="/member/login">Board</a></li>
+						href="/board/list">Board</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/join">Join</a></li>
 						<li class="nav-item"><a class="nav-link active"
