@@ -51,7 +51,7 @@ class MemberMapperTest {
 		int result = memberMapper.update(memberVO);
 		assertEquals(1,result);
 	}
-	@Test
+	//@Test
 	void deleteTest() throws Exception{
 		MemberVO memberVO = new MemberVO();
 		memberVO.setId("a1");
