@@ -12,6 +12,7 @@
 	rel="stylesheet"
 	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 	crossorigin="anonymous">
+	<c:import url="../temp/header_script.jsp"></c:import>
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
 	rel="stylesheet">
@@ -75,7 +76,12 @@
 
 	</div>
 
-
+<script type="text/javascript">
+//summernote
+$('#contents').summernote({
+	 height: 400
+});
+</script>
 
 </body>
 </html>

@@ -62,10 +62,72 @@
 			</button>
 		</div>
 	</div>
-	<!-- Option 1: Bootstrap Bundle with Popper -->
+
+<div class="container">
+	<input type="text" id="v1">
 	
+	<input type="checkbox" class="num" name="num" value="a">
+	<input type="checkbox" class="num" name="num" value="b">
+	<input type="checkbox" class="num" name="num" value="c">
+	<input type="checkbox" class="num" name="num" value="d">
+	
+	<button id="btn1">GET</button>
+	<button id="btn2">POST</button>
+	<button id="btn3">Ajax</button>
+</div>
 	
 	<c:import url="./temp/header_script.jsp"></c:import>
+	<script type="text/javascript">
+	$('#btn1').click(function(){
+		let v = $('#v1').val()
+		console.log(v);
+		$.get("./getTest?msg="+v,function(data){
+			console.log(data.trim());
+		});
+	});
+	
+	//btn2를 click하면 v1의 입력된 값을 /postTest 요청 파라미터로 전송
+	//응답으로 getResult.jsp로 받아서 오면됨
+	
+	$('#btn2').click(function(){
+		let v = $('#v1').val()
+		console.log(v);
+		$.post("./postTest",{msg:v},function(result){
+			console.log(result.trim());
+		});
+	});
+	
+	$('#btn3').click(function(){
+		let ar = [1,2,3];
+		let nums=[];
+		
+		$(".num").each(function(idx,item){
+			if($(item).prop("checked")){
+				console.log($(item).val());
+				nums.push($(item).val());
+			}
+		});
+		let v = $("#v1").val();
+		$.ajax({
+			type :"POST",
+		 	url	   : "./arryTest",
+		 	traditional:true,
+		 	data:{
+		 		msg:v,
+		 		numbers : ar,
+		 		nums:nums
+		 	},
+		 	success:function(d){
+		 		console.log(d.trim());
+		 	},
+		 	error:function(){
+		 		alert('에러가 발생했습니다');
+		 	}
+		})
+	})
+	
+
+	</script>
 	
 </body>
 </html>
