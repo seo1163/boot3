@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <c:if test="${empty member}">
+
 <header class="container-fluid">
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark"">
 		<div class="container-fluid">
@@ -23,6 +23,8 @@
 						href="/member/join">Join</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/login">로그인</a></li>
+						<li class="nav-item"><a class="nav-link active"
+						href="/product/list">Product</a></li>
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -69,6 +71,8 @@
 						href="/member/myPage">마이 페이지</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/logout">로그 아웃</a></li>
+						<li class="nav-item"><a class="nav-link active"
+						href="/product/list">Product</a></li>
 						
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
