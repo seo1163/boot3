@@ -77,25 +77,27 @@
 
 <script type="text/javascript">
 	
-	let pn=1;
-	$("#list").on("click","pager",function(){
+	//let pn=1;
+	$("#list").on("click",".pager",function(){
 	let checkPn=$(this).attr("data-pn");
 	if(checkPn >0){
-		pn=checkPn;	
-		getList();		
+		//pn=checkPn;	
+		getList(checkPn);		
 	}else{
 		//이전블럭과 다음블럭이 없다
 		alert("마지막 입니다.")
 	}
 	});
 	//list ajax url:ajaxList, Get
-	getList();
+	getList(1);
 	
-	function getList(){		
+	function getList(pn){	
+		console.log("start");
 		$.ajax({
 			type : "GET",
 			url : "./ajaxList",
 			data:{
+				pn:pn,
 				perPage:5
 			},
 			success:function(data){
