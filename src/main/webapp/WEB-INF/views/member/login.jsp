@@ -18,26 +18,42 @@
     
    
 	
-    <div class="col-sm-6">
-      <label for="floatingInput">ID</label>
-      <input type="text" class="form-control" id="floatingInput" placeholder="ID" name="id">
-    </div>
-    <div class="col-sm-6">
-      <label for="floatingPassword">Password</label>
-      <input type="text" class="form-control" id="floatingPassword" placeholder="pw" name="pw">
-    </div>
-
-    <div class="checkbox mb-3">
-      <label>
-        <input type="checkbox" value="1" name="remember"> Remember me
-      </label>
-    </div>
-    <button class="w-50 btn btn-lg btn-primary" type="submit">Sign in</button>
-    
-  </form>
-</main>
+   <div class="container mt-4">
+		<div class="row mt-4">
+			<div class="alert alert-light" role="alert">
+				<h4 style="text-transform: uppercase;">${board} Login</h4>
+			</div>
+		</div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+		<div class="row mt-4">
+			<form action="login" method="post">
+				<div class="row mb-3">
+					<label for="id" class="col-sm-2 col-form-label">ID</label>
+					<div class="col-sm-10">
+						<input type="text" name="id" class="form-control" id="id">
+					</div>
+				</div>
+
+				<div class="row mb-3">
+					<label for="pw" class="col-sm-2 col-form-label">Password</label>
+					<div class="col-sm-10">
+						<input type="password" name="pw" class="form-control" id="pw">
+					</div>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Join</button>
+			</form>
+
+		</div>
+
+
+	</div>
+
+
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 </html>

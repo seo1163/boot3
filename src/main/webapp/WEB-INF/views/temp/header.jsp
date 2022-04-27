@@ -20,7 +20,7 @@
 					<li class="nav-item"><a class="nav-link active"
 						href="/board/list">Board</a></li>
 						<li class="nav-item"><a class="nav-link active"
-						href="/member/join">Join</a></li>
+						href="/member/add">Join</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/login">로그인</a></li>
 						<li class="nav-item"><a class="nav-link active"
@@ -68,7 +68,7 @@
 					<li class="nav-item"><a class="nav-link active"
 						href="/board/list">Board</a></li>
 						<li class="nav-item"><a class="nav-link active"
-						href="/member/myPage">마이 페이지</a></li>
+						href="/member/mypage">마이 페이지</a></li>
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/logout">로그 아웃</a></li>
 						<li class="nav-item"><a class="nav-link active"

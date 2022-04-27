@@ -146,6 +146,10 @@
 				if(data.trim()=='1'){
 					alert("상품 등록 완료");
 					getList();
+					$("#productName").val("");
+					$("#productPrice").val("");
+					$("#productCount").val("");
+					$("#productDetail").summernote("code", ""); //$("#productDetail").val("");
 				}else{
 					alert("상품 등록 실패");
 				};

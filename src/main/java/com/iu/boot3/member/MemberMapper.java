@@ -1,32 +1,30 @@
+
 package com.iu.boot3.member;
 
 import org.apache.ibatis.annotations.Mapper;
 
-
-
-
-
 @Mapper
 public interface MemberMapper {
+	//파일 detail
+	public MemberFilesVO getFileDetail(MemberVO memberVO)throws Exception;
 	
-	//login
-	public MemberVO login(MemberVO memberVO)throws Exception;
 	
-	//join
-	public int join(MemberVO memberVO) throws Exception;
-	
-	//update
-	public int update(MemberVO memberVO) throws Exception;
-	
-	//delete
-	public int delete(MemberVO memberVO) throws Exception;
-	
-	//mypage
-	public MemberVO myPage(MemberVO memberVO) throws Exception;
-	
-	//detail
-	public MemberVO Detail(MemberVO memberVO)throws Exception;
-	
-	//insert : setFileAdd
+	//파일 추가
 	public int setFileAdd(MemberFilesVO memberFilesVO)throws Exception;
+	
+	//회원 탈퇴
+	public int setDelete(MemberVO memberVO)throws Exception;
+	
+	//회원 수정
+	public int setUpdate(MemberVO memberVO)throws Exception;
+	
+	//myPage
+	public MemberVO getDetail(MemberVO memberVO)throws Exception;
+	
+	//로그인
+	public MemberVO getLogin(MemberVO memberVO)throws Exception;
+	
+	//회원가입
+	public int setAdd(MemberVO memberVO)throws Exception;
+
 }
