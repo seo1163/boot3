@@ -14,7 +14,7 @@
 <c:import url="../temp/header.jsp"></c:import>
 
 <div class="container">
-	<h1>Detail Page</h1>
+	<h1>My Page</h1>
 	
 	<div class="row">
 		<div class="card">

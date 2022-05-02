@@ -1,10 +1,16 @@
 package com.iu.boot3.member;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.boot3.util.FileManager;
+
+import lombok.Value;
 
 
 @Service
@@ -13,6 +19,10 @@ public class MemberService {
 	private MemberMapper memberMapper;
 	@Autowired
 	private FileManager fileManger;
+	
+	//properties 파일의 member.role.member 속성값 변환
+//	@Value("${memer.role.member}")
+//	private String memberRole;
 	
 	public int setUpdate(MemberVO memberVO)throws Exception{
 		return memberMapper.setUpdate(memberVO);
@@ -40,6 +50,12 @@ public class MemberService {
 	public int setAdd(MemberVO memberVO, MultipartFile file)throws Exception{
 		
 		int result = memberMapper.setAdd(memberVO);
+		
+		Map<String, String> map = new HashMap<>();
+		map.putIfAbsent("id", memberVO.getId());
+		map.put("roleName", "ROLE_MEMBER");
+		
+		result = memberMapper.setRoleAdd(map);
 		
 		//MemberRole Table insert
 		

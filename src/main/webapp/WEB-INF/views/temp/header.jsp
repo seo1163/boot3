@@ -24,7 +24,7 @@
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/login">로그인</a></li>
 						<li class="nav-item"><a class="nav-link active"
-						href="/product/list">Product</a></li>
+						href="/product/list">Product</a></li>						
 					<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -72,9 +72,21 @@
 						<li class="nav-item"><a class="nav-link active"
 						href="/member/logout">로그 아웃</a></li>
 						<li class="nav-item"><a class="nav-link active"
-						href="/product/list">Product</a></li>
-						
-					<li class="nav-item dropdown"><a
+						href="/product/list">Product</a></li>		
+						<c:forEach items="${member.roleVOs}" var="vo">
+						<c:if test="${vo.roleName eq 'ROLE_ADMIN'}">
+						<li class="nav-item"><a class="nav-link active"					
+						href="/admin/manage">관리자 모드</a></li>	
+						</c:if>	
+						</c:forEach>
+										
+						<c:forEach items="${member.roleVOs}" var="vo">
+							<c:if test="${vo.roleName eq 'ROLE_SELLER'}">
+							<li class="nav-item"><a class="nav-link active"						
+							href="/product/manage">Product 관리</a></li>	
+							</c:if>	
+							</c:forEach>		
+						<li class="nav-item dropdown"><a
 						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 						role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							Dropdown </a>

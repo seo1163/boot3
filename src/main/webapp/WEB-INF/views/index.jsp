@@ -62,8 +62,16 @@
 			</button>
 		</div>
 	</div>
+	
+	<div class="container">
+		<c:if test="${not empty member}">
+			<c:forEach items="${member.roleVOs}" var="vo">
+				<h3>${vo.roleName}</h3>
+			</c:forEach>
+		</c:if>	
+	</div>
 
-<div class="container">
+<!-- <div class="container">
 	<input type="text" id="v1">
 	
 	<input type="checkbox" class="num" name="num" value="a">
@@ -74,7 +82,7 @@
 	<button id="btn1">GET</button>
 	<button id="btn2">POST</button>
 	<button id="btn3">Ajax</button>
-</div>
+</div>-->
 	
 	<c:import url="./temp/header_script.jsp"></c:import>
 	<script type="text/javascript">

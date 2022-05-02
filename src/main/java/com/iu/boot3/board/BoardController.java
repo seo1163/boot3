@@ -29,28 +29,28 @@ public class BoardController {
 	public ModelAndView setSummerFileDelete(String fileName)throws Exception{
 		ModelAndView mv = new ModelAndView();
 		System.out.println(fileName);
-		 boolean result = boardService.setSummerFileDelete(fileName);
-		 mv.setViewName("common/result");
-		 mv.addObject("result",result);
+		boolean result = boardService.setSummerFileDelete(fileName);
+		mv.setViewName("common/result");
+		mv.addObject("result", result);
 		return mv;
 	}
 	
 	@PostMapping("summerFileUpload")
-	public ModelAndView setSummerFileUpload(MultipartFile files)throws Exception{
+	public ModelAndView setSummerFileUpload(MultipartFile file) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		String fileName = boardService.setSummerFileUpload(files);
+		String fileName = boardService.setSummerFileUpload(file);
 		System.out.println(fileName);
 		mv.setViewName("common/result");
-		mv.addObject("result",fileName);
+		mv.addObject("result", fileName);
 		return mv;
 	}
 	
 	@GetMapping("fileDown")
 	public ModelAndView getFileDown(BoardFilesVO boardFilesVO)throws Exception{
-		ModelAndView mv= new ModelAndView();
+		ModelAndView mv = new ModelAndView();
 		boardFilesVO = boardService.getFileDetail(boardFilesVO);
 		//속성명은 fileDown 클래스에서 사용하는 이름과 동일하게
-		mv.addObject("fileVO" ,boardFilesVO);
+		mv.addObject("fileVO", boardFilesVO);
 		
 		//Bean(클래스)의 이름과 동일하게
 		mv.setViewName("fileDown");

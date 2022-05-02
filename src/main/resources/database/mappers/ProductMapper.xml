@@ -5,9 +5,13 @@
     
 <mapper namespace="com.iu.boot3.product.ProductMapper">
 	
+	<select id="getFileDetail" parameterType="ProductFilesVO" resultType="ProductFilesVO">
+		SELECT * FROM PRODUCTFILES WHERE FILENUM=#{fileNum}
+	</select>
+	
 	<insert id="setAdd" parameterType="ProductVO" useGeneratedKeys="true" keyProperty="productNum">
  		INSERT INTO PRODUCT
- 		VALUES(#{productNum}, #{productName}, #{productPrice}, #{productCount}, #{productDetail})
+ 		VALUES(#{productNum}, #{productName}, #{productPrice}, #{productCount}, #{productDetail},#{id},#{sale})
  	</insert>
  	
  	<insert id="setFileAdd" parameterType="ProductFilesVO">
@@ -19,17 +23,42 @@
  			SELECT 
 			COUNT(PRODUCTNUM) 
 		 	FROM PRODUCT 
-		 	WHERE PRODUCTNUM>0 and 
+		 	WHERE PRODUCTNUM>0 
+		 	
+		 	<if test="id !=null">
+		 	AND ID = #{id}
+		 	</if>
+		 	
+		 	and 
 		 		 
 			<choose>
 				<when test="kind == 'col1'">
 					PRODUCTNAME
 				</when>
+			
 				<otherwise>
 					PRODUCTDETAIL
 				</otherwise>
 			</choose>
 			LIKE CONCAT('%',#{search},'%')
+ 	</select>
+ 	
+ 	<select id="getDetail" parameterType="ProductVO" resultMap="listResult">
+ 		SELECT P.*,F.*
+ 		FROM PRODUCT P
+ 			LEFT JOIN
+ 			PRODUCTFILES F
+ 			USING(PRODUCTNUM)
+ 		WHERE PRODUCTNUM=#{productNum} 		
+ 	</select>
+ 	
+ 	<select id="getManageDetail" parameterType="ProductVO" resultMap="listResult">
+ 		SELECT P.*,F.*
+ 		FROM PRODUCT P
+ 			LEFT JOIN
+ 			PRODUCTFILES F
+ 			USING(PRODUCTNUM)
+ 		WHERE PRODUCTNUM=#{productNum}
  	</select>
  	
  	<select id="getList" parameterType="Pager" resultMap="listResult">
@@ -39,12 +68,23 @@
 			SELECT 
 			* 
 		 	FROM PRODUCT 
-		 	WHERE PRODUCTNUM>0 and 
+		 	WHERE PRODUCTNUM>0 
+		 	<choose>
+		 		<when test="id != null">
+		 			AND ID=#{id}
+		 		</when>
+		 		<otherwise>
+		 			AND SALE=1
+		 		</otherwise>
+		 	</choose>
+		 
+		 	
+		 	and 
 		 		 
 			<choose>
 				<when test="kind == 'col1'">
 					PRODUCTNAME
-				</when>
+				</when>			
 				<otherwise>
 					PRODUCTDETAIL
 				</otherwise>
@@ -65,14 +105,32 @@
     	<result column="productPrice" property="productPrice"/>
     	<result column="productCount" property="productCount"/>
     	<result column="productDetail" property="productDetail"/>
+    	<result column="id" property="id"/>
+    	<result column="sale" property="sale"/>
     	<collection property="productFilesVOs" javaType="List" ofType="ProductFilesVO">
     		<id column="fileNum" property="fileNum"/>
     		<result column="fileName" property="fileName"/>
     		<result column="oriName" property="oriName"/>
     	</collection>
     </resultMap>
+ 	 	
+ 	<delete id="setDelete" parameterType="ProductVO">
+ 		DELETE FROM PRODUCT WHERE PRODUCTNUM=#{productNum}
+ 	</delete>
  	
+ 	<delete id="setFileDelete" parameterType="ProductFilesVO">
+ 		DELETE FROM PRODUCTFILES WHERE FILENUM=#{fileNum}
+ 	</delete>
  	
+ 	<update id="setUpdate" parameterType="ProductVO">
+ 		UPDATE PRODUCT 
+ 		SET 
+ 			PRODUCTNAME=#{productName}, 
+ 			PRODUCTPRICE=#{productPrice}, 
+ 			PRODUCTCOUNT=#{productCount}, 
+ 			PRODUCTDETAIL=#{productDetail}
+ 		WHERE PRODUCTNUM=#{productNum}
+ 	</update>
  	
  
 </mapper>

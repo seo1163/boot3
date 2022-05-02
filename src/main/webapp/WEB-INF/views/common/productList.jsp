@@ -8,7 +8,8 @@
 			<th>No.</th>
 			<th>Name</th>
 			<th>Price</th>
-			<th>Count</th>			
+			<th>Count</th>	
+			<th>판매여부</th>		
 		</tr>
 	</thead>
 
@@ -18,9 +19,10 @@
 	<c:forEach items="${list}" var="vo">
 		<tr>
 			<td>${vo.productNum}</td>
-			<td>${vo.productName}</td>
+			<td><a class="link-success text-decoration-none" href="./manageDetail?productNum=${vo.productNum}">${vo.productName}</a></td>
 			<td>${vo.productPrice}</td>
 			<td>${vo.productCount}</td>			
+			<td>${vo.sale ==1?'판매중':'판매중지'}</td>
 		</tr>
 	</c:forEach>
 </tbody>

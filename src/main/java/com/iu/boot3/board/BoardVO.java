@@ -18,6 +18,9 @@ public class BoardVO {
 	private Long step;
 	private Long depth;
 	private Integer category;
-
+	
 	private List<BoardFilesVO> filesVOs;
+	
+	
+
 }

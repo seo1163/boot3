@@ -1,6 +1,8 @@
 
 package com.iu.boot3.member;
 
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
@@ -26,5 +28,8 @@ public interface MemberMapper {
 	
 	//회원가입
 	public int setAdd(MemberVO memberVO)throws Exception;
+	
+	//Role
+	public int setRoleAdd(Map<String, String> map)throws Exception;
 
 }
