@@ -77,4 +77,10 @@
 		VALUES(#{id}, #{pw}, #{name}, #{email}, #{phone})
 	</insert> 
  
+ 	<select id="getFindId" parameterType="MemberVO" resultType="MemberVO">
+ 		SELECT 
+ 			ID 
+ 		FROM MEMBER
+ 		WHERE EMAIL=#{email}
+ 	</select>
  </mapper>  

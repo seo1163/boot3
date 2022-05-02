@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,40 +15,20 @@
 <c:import url="../temp/header.jsp"></c:import>
 
 <div class="container">
-	<h1>My Page</h1>
+	<h1>ID 찾기 결과</h1>
 	
 	<div class="row">
-		<div class="card">
-			<ul class="list-group list-group-flush">
-			   	<li class="list-group-item">${member.id}</li>
-		   		<li class="list-group-item">${vo.name} </li>
-		   		<li class="list-group-item">${vo.email} </li>
-		   		<li class="list-group-item">${vo.phone} </li>
-			</ul>
-		  
-			
-	    	
-	    	<hr class="my-6">
-	    		<h6>Photo</h6>
-	    	
-				<ul class="list-group list-group-flush">
-				   	<li class="list-group-item">
-				   		<a href="./fileDown?fileNum=${vo.memberFilesVO.fileName}">${vo.memberFilesVO.oriName}</a>
-				   	</li>
-				</ul>
-
-    	 
-		</div>
-	
+		<c:choose>
+			<c:when test="${not empty idResult}">
+			<h3><spring:message code="member.find.info" arguments="${idResult.id}"></spring:message></h3>			
+			</c:when>
+			<c:otherwise>
+			<h3><spring:message code="member.notfind.info" ></spring:message></h3>			
+			</c:otherwise>
+		</c:choose>
+		
 	</div>
-	
 </div>
-	<div class="container my-4">
-		<div class="col-2 d-flex">
-			<a href="update" role="button" class="btn btn-success mx-1">Update</a>
-			<a href="delete" role="button" class="btn btn-danger mx-1">Delete</a>
-		</div>
-	</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

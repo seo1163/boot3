@@ -82,8 +82,9 @@ public class MemberController {
 	}
 	
 	@GetMapping("login")
-	public ModelAndView getLogin()throws Exception{
+	public ModelAndView getLogin(@ModelAttribute MemberVO memberVO)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		//mv.addObject("vo", new MemberVO());
 		mv.setViewName("member/login");
 		return mv;
 	}
@@ -109,13 +110,28 @@ public class MemberController {
 		mv.setViewName("redirect:../");
 		return mv;
 	}
- 
-	
-	
+ 	
 	@GetMapping("add")
 	public ModelAndView setAdd()throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/add");
 		return mv;
 	}
+	
+	@GetMapping("findId")
+	public ModelAndView getFindId() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("member/findId");
+		return mv;
+	}
+	
+	@PostMapping("findId")
+	public ModelAndView getFindId(MemberVO memberVO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberVO=memberService.getFindId(memberVO);
+		mv.addObject("idResult",memberVO);
+		mv.setViewName("member/findIdResult");
+		return mv;
+	}
+	
 }
