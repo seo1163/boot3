@@ -4,6 +4,11 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
  <mapper namespace="com.iu.boot3.member.MemberMapper">
+ 
+ 	<select id="getId" parameterType="MemberVO" resultType="MemberVO">
+ 		SELECT ID FROM MEMBER WHERE ID=#{id}
+ 	</select>
+ 
  	<select id="getFileDetail" parameterType="MemberVO" resultType="MemberFilesVO">
  		SELECT * FROM MEMBERFILES WHERE ID=#{id} 
  	</select>

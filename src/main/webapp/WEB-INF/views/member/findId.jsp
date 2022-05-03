@@ -12,17 +12,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:import url="../temp/header.jsp"></c:import>
-<main class="form-signin">
+	<c:import url="../temp/header.jsp"></c:import>
 
-  <form class="needs-validation" novalidate action="./login" method="post" enctype="multipart/form-data">
-    
-   
-	
-   <div class="container mt-4">
+	<div class="container mt-4">
 		<div class="row mt-4">
 			<div class="alert alert-light" role="alert">
-				<h4 style="text-transform: uppercase;">아이디 찾기</h4>
+				<h4 style="text-transform: uppercase;">${board} Find ID</h4>
 			</div>
 		</div>
 
@@ -35,7 +30,12 @@
 						<input type="text" name="email" class="form-control" id="email">
 					</div>
 				</div>
-<button type="submit" class="btn btn-primary">ID찾기</button>
+
+				
+
+				<button type="submit" class="btn btn-primary">ID찾기</button>
+				
+
 			</form>
 
 		</div>
@@ -44,7 +44,5 @@
 	</div>
 
 
-	
-	</script>
 </body>
 </html>

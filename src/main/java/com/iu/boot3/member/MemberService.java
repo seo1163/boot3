@@ -1,17 +1,16 @@
+
 package com.iu.boot3.member;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.iu.boot3.util.FileManager;
-
-import lombok.Value;
-
 
 @Service
 public class MemberService {
@@ -21,8 +20,34 @@ public class MemberService {
 	private FileManager fileManger;
 	
 	//properties 파일의 member.role.member 속성값 변환
-//	@Value("${memer.role.member}")
-//	private String memberRole;
+	@Value("{member.role.member}")
+	private String memberRole;
+	
+	//사용자 정의 검증 메서드 선언
+	public boolean memberError(MemberVO memberVO, BindingResult bindingResult) throws Exception{
+		boolean check=false;
+		//check=false : 검증 성공 (error없음)
+		//check=true : 검증 실패 (error 있음)
+		
+		//1. annotation 기본 검증 결과
+		check = bindingResult.hasErrors();
+		
+		//2. Password가 일치하는지 수동검증
+		if(!memberVO.getPw().equals(memberVO.getCheckPw())) {
+			check=true;
+			bindingResult.rejectValue("checkPw","member.password.notEqul");
+		}
+		//3. ID 중복검사
+		MemberVO idCheck = memberMapper.getId(memberVO);
+		if(idCheck !=null) {
+			check=true;
+			bindingResult.rejectValue("id", "member.id.equal");
+		}
+		
+		
+		return check;
+	}
+	
 	
 	public MemberVO getFindId(MemberVO memberVO) throws Exception{
 		return memberMapper.getFindId(memberVO);

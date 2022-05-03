@@ -32,5 +32,8 @@ public interface MemberMapper {
 	
 	//Role
 	public int setRoleAdd(Map<String, String> map)throws Exception;
+	
+	//아이디 중복확인
+	public MemberVO getId(MemberVO memberVO) throws Exception;
 
 }
