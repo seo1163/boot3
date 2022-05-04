@@ -1,5 +1,6 @@
 package com.iu.boot3.product;
 
+
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -7,7 +8,9 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.iu.boot3.member.MemberVO;
 import com.iu.boot3.util.Pager;
-
 @Controller
 @RequestMapping("/product/*")
 public class ProductController {
@@ -153,4 +155,37 @@ public class ProductController {
 		}
 		return mv;
 	}
+	
+	//예외처리 메서드++++++++++++++++++++++++++++
+//	@ExceptionHandler(BindException.class)
+//	public ModelAndView ex1() {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("Exception");
+//		mv.setViewName("error/error");
+//		return mv;
+//	}
+//	@ExceptionHandler(NullPointerException.class)
+//	public ModelAndView ex2() {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("Exception");
+//		mv.setViewName("error/error");
+//		return mv;
+//		}
+//	
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView ex3() {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("Exception");
+//		mv.setViewName("error/error");
+//		return mv;
+//		}
+//	
+//	@ExceptionHandler(Throwable.class)
+//	public ModelAndView ex4() {
+//		ModelAndView mv = new ModelAndView();
+//		System.out.println("Exception");
+//		mv.setViewName("error/error");
+//		return mv;
+//		}
+//	
 }
