@@ -18,7 +18,13 @@
 <c:import url="./temp_detail.jsp"></c:import>
 
 <div class="container">
-	<h3><spring:message code="product.detail.info" arguments="${vo.productPrice}&${vo.productCount}" argumentSeparator="&"></spring:message></h3>
+	<%-- <h3><spring:message code="product.detail.info" arguments="${vo.productPrice}&${vo.productCount}" argumentSeparator="&"></spring:message></h3> --%>
+</div>
+
+<div class="container">
+	<div class="row">
+		<button type="button" id="cart" data-pn="${vo.productNum}" class="btn btn-danger">장바구니</button>
+	</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

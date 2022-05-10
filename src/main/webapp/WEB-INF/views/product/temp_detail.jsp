@@ -20,8 +20,8 @@
 			<div class="card-body">
 				${vo.productDetail}
 	    	</div>
-	    	    	 
 		</div>
+	    	<button type="button" id="cart" class="btn btn-primary">장바구니</button>	    	 
 	
 	</div> 
 </div>
